@@ -81,7 +81,7 @@ public class HospitalApp {
                         System.out.print("Ailment: ");
                         String ailment = sc.nextLine();
                         Patient p = service.registerPatient(name, age, ailment);
-                        System.out.println("✅ Registered: " + p);
+                        System.out.println("Registered: " + p);
                         break;
                     case "2":
                         System.out.print("Patient ID: ");
@@ -92,7 +92,7 @@ public class HospitalApp {
                         System.out.print("Patient ID: ");
                         int id3 = Integer.parseInt(sc.nextLine().trim());
                         service.dischargePatient(id3);
-                        System.out.println("✅ Discharged patient id " + id3);
+                        System.out.println("Discharged patient id " + id3);
                         break;
                     case "4":
                         service.listPatients().forEach(System.out::println);
@@ -101,10 +101,10 @@ public class HospitalApp {
                         running = false;
                         break;
                     default:
-                        System.out.println("⚠️ Invalid option.");
+                        System.out.println("Invalid option.");
                 }
             } catch (Exception ex) {
-                System.out.println("❌ " + ex.getMessage());
+                System.out.println("Error" + ex.getMessage());
             }
         }
         sc.close();
