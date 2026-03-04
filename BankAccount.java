@@ -25,7 +25,7 @@ class BankAccount {
     public void deposit(BigDecimal amount) {
         validateAmount(amount);
         balance = balance.add(amount).setScale(2, RoundingMode.HALF_UP);
-        System.out.println("✅ Deposited: ₹" + amount + ". New Balance: ₹" + balance);
+        System.out.println(" Deposited: ₹" + amount + ". New Balance: ₹" + balance);
     }
 
     // Function: withdraw
@@ -35,7 +35,7 @@ class BankAccount {
             throw new IllegalArgumentException("Insufficient funds. Available balance: ₹" + balance);
         }
         balance = balance.subtract(amount).setScale(2, RoundingMode.HALF_UP);
-        System.out.println("✅ Withdrawn: ₹" + amount + ". New Balance: ₹" + balance);
+        System.out.println(" Withdrawn: ₹" + amount + ". New Balance: ₹" + balance);
     }
 
     private void validateAmount(BigDecimal amount) {
@@ -49,7 +49,7 @@ public class BankApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BankAccount account = new BankAccount(); // Start with zero balance
-        System.out.println("🏦 Welcome to Simple Bank");
+        System.out.println(" Welcome to Simple Bank");
         System.out.println("--------------------------");
 
         boolean running = true;
@@ -61,7 +61,7 @@ public class BankApp {
             try {
                 switch (choice) {
                     case "1":
-                        System.out.println("💰 Current Balance: ₹" + account.checkBalance());
+                        System.out.println(" Current Balance: ₹" + account.checkBalance());
                         break;
                     case "2":
                         BigDecimal depositAmount = promptForAmount(scanner, "Enter amount to deposit: ₹");
@@ -73,15 +73,15 @@ public class BankApp {
                         break;
                     case "4":
                         running = false;
-                        System.out.println("👋 Thank you for banking with us!");
+                        System.out.println(" Thank you for banking with us!");
                         break;
                     default:
-                        System.out.println("⚠️ Invalid option. Please choose 1-4.");
+                        System.out.println(" Invalid option. Please choose 1-4.");
                 }
             } catch (IllegalArgumentException ex) {
-                System.out.println("❌ Error: " + ex.getMessage());
+                System.out.println(" Error: " + ex.getMessage());
             } catch (Exception ex) {
-                System.out.println("❌ Unexpected error: " + ex.getMessage());
+                System.out.println(" Unexpected error: " + ex.getMessage());
             }
             System.out.println();
         }
@@ -103,12 +103,12 @@ public class BankApp {
             try {
                 BigDecimal amount = new BigDecimal(input).setScale(2, RoundingMode.HALF_UP);
                 if (amount.compareTo(BigDecimal.ZERO) <= 0) {
-                    System.out.println("⚠️ Amount must be greater than zero. Try again.");
+                    System.out.println(" Amount must be greater than zero. Try again.");
                     continue;
                 }
                 return amount;
             } catch (NumberFormatException ex) {
-                System.out.println("⚠️ Invalid number format. Example valid input: 100, 250.50");
+                System.out.println(" Invalid number format. Example valid input: 100, 250.50");
             }
         }
     }
